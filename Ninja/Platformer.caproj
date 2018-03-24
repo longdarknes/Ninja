@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Platformer</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author></author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.mycompany.myapp</app-id>
+    <unique-id>1297af6hbwz8g</unique-id>
+    <saved-with-version>25000</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="LOS" version="1">Line Of Sight</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="jumpthru" version="1">Jump-thru</behavior>
+        <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>1280</width>
+        <height>720</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Downscaling">Medium quality</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Construct 2 splash</prop>
+        <prop name="Orientations">Any</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preload sounds">Yes</prop>
+        <prop name="Preview browser">Chrome</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="Player" sid="423776572303875">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="594579460894027">
+                    <behavior id="Platform" />
+                </behavior-type>
+                <behavior-type name="ScrollTo" sid="153621452300148">
+                    <behavior id="scrollto" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="697601185940717" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\Animation 1.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Platform" sid="658426993278300">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="548744310212194">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Boots" sid="113819764505856">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="961289322125740" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0.34375" y="0" />
+                            <point x="0.4375" y="0.638672" />
+                            <point x="0.898438" y="0.730469" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Keyboard" sid="269781349112494">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Wall" sid="313518639485720">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid" sid="528316173889301">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Enemy" sid="284595397403572">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="MovingRight" sid="710888975860541" type="boolean" />
+                <instance-variable name="Patrolling" sid="101733661646564" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Platform" sid="845990931500979">
+                    <behavior id="Platform" />
+                </behavior-type>
+                <behavior-type name="LineOfSight" sid="682980736484020">
+                    <behavior id="LOS" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="653361215323315" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\Animation 1.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Coin" sid="726762660410835">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="6" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="642043969785517" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\635548781124197125.png">
+                        <collision-poly>
+                            <point x="0.0471137" y="0.0102041" />
+                            <point x="1" y="0.0102041" />
+                            <point x="1" y="0.5" />
+                            <point x="1" y="0.989796" />
+                            <point x="0.0471137" y="0.989796" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="ScoreText" sid="152177537359920">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="HPBG" sid="731415224211147">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="HealthBar" sid="543418852282647">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="GameOverText" sid="270637485485251">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="RestartText" sid="824395605469094">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="WinText" sid="556967603736696">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="PistolCollectible" sid="424249448660146">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="295490472381071" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Bullet" sid="495072629057138">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="336709956350004">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="674545237337470" speed="5">
+                    <frame duration="1" hotspotX="0.52" hotspotY="0.5" original-source="D:\Repos\MB-122017-Construct-Sat-12-00\bullet.png">
+                        <collision-poly>
+                            <point x="0.16" y="0.25" />
+                            <point x="0.48" y="0.25" />
+                            <point x="0.8" y="0.3125" />
+                            <point x="0.92" y="0.5" />
+                            <point x="0.8" y="0.6875" />
+                            <point x="0.48" y="0.75" />
+                            <point x="0.16" y="0.75" />
+                            <point x="0.08" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Bullets" sid="758605604244496">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="PatrolMarker" sid="384073100359593">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="209986458596177" speed="5">
+                    <frame duration="1" hotspotX="0.0294118" hotspotY="0" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BackGround1" sid="959792685597848">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="141056756092823" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\screen-0.jpg" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BackGround2" sid="407914103986975">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="301786737693601" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\background0.jpg" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text3Level" sid="544474770555015">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="BackGround4" sid="742070015346768">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="648455852539837" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\IMG_451397.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="StartText" sid="702313222316414">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Mouse" sid="395339793883853">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="Boss" sid="668441570414556">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Platform" sid="316488690255816">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="332773507835537" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\aaaaaaa.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="SecretBlock" sid="805101699240630">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Jumpthru" sid="554631753097023">
+                    <behavior id="jumpthru" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="504459751729830" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BossHP" sid="193106926630801">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="441827494777777" speed="5">
+                    <frame duration="1" hotspotX="1" hotspotY="1" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="BackGround3" sid="991109581683006">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="351707696942376" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Desktop\5146_original.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text" sid="377666392358859">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Upper" sid="930329746485698">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid" sid="847914467765384">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="TiledBackground2" sid="235540318187310">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Solid" sid="864986428196431">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="MedKit" sid="702981093475070">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="603726459637563" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Particles1" sid="944588120650589">
+            <plugin id="Particles" />
+            <texture />
+        </object-type>
+        <object-type name="ScoreText2" sid="518867718987443">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Sprite" sid="540678444885376">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="939120715488279" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Level 1.xml</layout>
+        <layout>Level 2.xml</layout>
+        <layout>Level 3.xml</layout>
+        <layout>Level 4.xml</layout>
+        <layout>Win.xml</layout>
+        <layout>GameOver.xml</layout>
+        <layout>Start.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>GameEvents.xml</event-sheet>
+        <event-sheet>Restart.xml</event-sheet>
+        <event-sheet>Event sheet 1.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Keyboard" uid="24" />
+        <global-instance type="Mouse" uid="91" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

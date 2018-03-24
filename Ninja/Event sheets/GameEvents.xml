@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>GameEvents</name>
+    <events>
+        <variable constant="0" name="BossHP" sid="955464887202233" static="0" type="number">50</variable>
+        <variable constant="0" name="DoubleJump" sid="523070009016047" static="0" type="number">0</variable>
+        <variable constant="0" name="Bullets" sid="746299648043577" static="0" type="number">0</variable>
+        <variable constant="0" name="PlayerHealth" sid="342885954814615" static="0" type="number">6</variable>
+        <variable constant="0" name="Score" sid="316616507585271" static="0" type="number">0</variable>
+        <variable constant="0" name="Coins" sid="804005762718056" static="0" type="number">0</variable>
+        <event-group description="" sid="856674954402211" title="System">
+            <sub-events>
+                <event-block sid="836717600035231">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="473606719446462" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="517107312639432" type="System">
+                            <param id="0" name="Variable">Coins</param>
+                            <param id="1" name="Value">Coin.Count</param>
+                        </action>
+                        <action id="0" name="Set text" sid="969139584574690" type="ScoreText">
+                            <param id="0" name="Text">&quot;SCORE: &quot; &amp;Score</param>
+                        </action>
+                        <action id="0" name="Set text" sid="626847446392419" type="Bullets">
+                            <param id="0" name="Text">Bullets</param>
+                        </action>
+                        <action id="0" name="Set text" sid="531520653777944" type="ScoreText2">
+                            <param id="0" name="Text">Coins &amp; &quot; coins left&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="898422583389644">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="565088651255614" type="System">
+                                    <param id="0" name="Variable">DoubleJump</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Platform" id="13" name="Set double-jump" sid="959946913979122" type="Player">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="196085928188282">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="389879769000115" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="820375222243031" type="System">
+                            <param id="0" name="Layout">GameOver</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="541519997169661">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="697726029838945" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="526467503720669" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Value">6</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="482633709705836" type="HealthBar">
+                            <param id="0" name="Width">PlayerHealth/6*88</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="390113617753445">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="891711303880826" type="System">
+                            <param id="0" name="First value">Coin.Count</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-43" name="Go to next/previous layout" sid="657787210992368" type="System">
+                            <param id="0" name="Which">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="482742594640318" title="Control">
+            <sub-events>
+                <event-block sid="826107123892531">
+                    <conditions>
+                        <condition id="0" name="On click" sid="965587902488916" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                            <param id="1" name="Click type">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="238279972601964" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="796675969045249" type="Player">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="288537766203794" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="449642789511560" type="Bullets">
+                            <param id="0" name="Text">Bullets</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="171234352022079">
+                            <conditions>
+                                <condition id="7" name="Is mirrored" sid="890280536135931" type="Player" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Bullet" id="0" name="Set speed" sid="336399777664683" type="Bullet">
+                                    <param id="0" name="Speed">-Bullet.Bullet.Speed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block any="1" sid="201817522615163">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="582911059772387" type="Keyboard">
+                            <param id="0" name="Key">37</param>
+                        </condition>
+                        <condition id="2" name="Key is down" sid="355470579436535" type="Keyboard">
+                            <param id="0" name="Key">65</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="989736285861174" type="Player">
+                            <param id="0" name="State">0</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="149861090851501" type="Player">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="415110895510189">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="278907166960767" type="Keyboard">
+                            <param id="0" name="Key">39</param>
+                        </condition>
+                        <condition id="2" name="Key is down" sid="299746249959235" type="Keyboard">
+                            <param id="0" name="Key">68</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Set mirrored" sid="215414555873879" type="Player">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="351574763854135" type="Player">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="792811249597834">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="262289847509997" type="Keyboard">
+                            <param id="0" name="Key">32</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="684995587388687" type="Player">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="393004133694446" title="Events from Player">
+            <sub-events>
+                <event-block sid="447611956120441">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="506091022066497" type="Sprite">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="894982044415078" type="Player" />
+                    </actions>
+                </event-block>
+                <event-block sid="324726400734972">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="778298752852016" type="Player">
+                            <param id="0" name="Object">PistolCollectible</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="708397293676327" type="PistolCollectible" />
+                        <action id="-10" name="Add to" sid="108316752116961" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Value">15</param>
+                        </action>
+                        <action id="0" name="Set text" sid="619996429190161" type="Bullets">
+                            <param id="0" name="Text">Bullets</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="938830510996745">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="733543857830373" type="Player">
+                            <param id="0" name="Object">Coin</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="684870414424830" type="Coin" />
+                        <action id="-10" name="Add to" sid="628545378107971" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">1.4</param>
+                        </action>
+                        <action id="0" name="Set text" sid="976014139326671" type="ScoreText">
+                            <param id="0" name="Text">&quot;SCORE: &quot; &amp;Score</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="645935377799632" type="Coin">
+                            <param id="0" name="Object">Particles1</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="773761928417793" type="System">
+                            <param id="0" name="Variable">Coins</param>
+                            <param id="1" name="Value">Coin.Count</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="781043387256667" type="System">
+                            <param id="0" name="Variable">Coins</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="813897152630386" type="ScoreText2">
+                            <param id="0" name="Text">Coins &amp; &quot; coins left&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="658607822527513">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="485262420353384" type="Player">
+                            <param id="0" name="Object">Boots</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="806510937538999" type="Boots" />
+                        <action behavior="Platform" id="13" name="Set double-jump" sid="601856681013102" type="Player">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="529601808686587" type="System">
+                            <param id="0" name="Variable">DoubleJump</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="955117917999582">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="319077282019568" type="Player">
+                            <param id="0" name="Object">MedKit</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="785423812783617" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="687467314018639" type="MedKit" />
+                        <action id="-10" name="Add to" sid="759212136588363" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="948093760955781" type="HealthBar">
+                            <param id="0" name="Width">PlayerHealth/6*88</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="690945458533158" title="Events from Enemy">
+            <sub-events>
+                <event-block sid="956726926337292">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" inverted="1" name="Has LOS to object" sid="812271412479832" type="Enemy">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="697728178830480" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action behavior="Platform" id="1" name="Set max speed" sid="259981703478838" type="Enemy">
+                            <param id="0" name="Max Speed">150</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="664015615277631">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" name="Has LOS to object" sid="140573846049199" type="Enemy">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="633513973296059" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action behavior="Platform" id="1" name="Set max speed" sid="740587106310481" type="Enemy">
+                            <param id="0" name="Max Speed">320</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="704137002024865">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="560277806109610" type="Enemy">
+                            <param id="0" name="Object">PatrolMarker</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="907737253024922" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-14" name="Toggle boolean" sid="595632991645360" type="Enemy">
+                            <param id="0" name="Instance variable">MovingRight</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="477965070263174">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="426682752698826" type="Enemy">
+                            <param id="0" name="Instance variable">MovingRight</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="158186569056175" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="131846796396382" type="Enemy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="827938316509460" type="Enemy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="149764066485933">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="860786488877967" type="Enemy">
+                            <param id="0" name="Instance variable">MovingRight</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" sid="435837928928735" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="498014438445089" type="Enemy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="574147062518303" type="Enemy">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="835292169121505">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="470596782958320" type="Bullet">
+                            <param id="0" name="Object">Enemy</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="312495209868548" type="Bullet" />
+                        <action id="-9" name="Destroy" sid="788544144879910" type="Enemy" />
+                    </actions>
+                </event-block>
+                <event-block sid="269051148563183">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="304542290469184" type="Enemy">
+                            <param id="0" name="Comparison">2</param>
+                            <param id="1" name="X co-ordinate">Player.X</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="164702403305744" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="398578558261351" type="Enemy">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="507043457664361" type="Enemy">
+                            <param id="0" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="684941344538608">
+                    <conditions>
+                        <condition id="-1" name="Compare X" sid="847084451824491" type="Enemy">
+                            <param id="0" name="Comparison">4</param>
+                            <param id="1" name="X co-ordinate">Player.X</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="514906280533158" type="Enemy">
+                            <param id="0" name="Instance variable">Patrolling</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Platform" id="7" name="Simulate control" sid="899818389718313" type="Enemy">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                        <action id="7" name="Set mirrored" sid="610350554814614" type="Enemy">
+                            <param id="0" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="445112771950009">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="800881146671314" type="Enemy">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="643667480523199" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="986889207277080" type="HealthBar">
+                            <param id="0" name="Width">PlayerHealth/6*88</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="319951562153951" title="Events from BOSS">
+            <sub-events>
+                <event-block sid="633228619819030">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="911323607895869" type="Boss">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Subtract from" sid="202303384752245" type="System">
+                            <param id="0" name="Variable">PlayerHealth</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-5" name="Set width" sid="135232454803550" type="HealthBar">
+                            <param id="0" name="Width">PlayerHealth/6*88</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="455965012905807">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="921991723173525" type="System">
+                            <param id="0" name="Variable">Bullets</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="373895311813908" type="System">
+                            <param id="0" name="First value">PistolCollectible.Count</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="937602648815916" type="Boss">
+                            <param id="0" name="Object">PistolCollectible</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="164116031890288">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="246360489432365" type="System">
+                            <param id="0" name="Variable">BossHP</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="542628671877972" type="Boss" />
+                        <action behavior="Jumpthru" id="0" name="Set enabled" sid="699126153981991" type="SecretBlock">
+                            <param id="0" name="State">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="185482965231446" type="SecretBlock">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="578707527672291">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="846614088717140" type="Bullet">
+                            <param id="0" name="Object">Boss</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="200289442036436" type="Bullet" />
+                        <action id="-11" name="Subtract from" sid="600477805872628" type="System">
+                            <param id="0" name="Variable">BossHP</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="741743725498218">
+            <conditions>
+                <condition id="-1" name="Compare X" sid="557316212696445" type="Boss">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">Player.X</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="162782699337424" type="Boss">
+                    <param id="0" name="Control">1</param>
+                </action>
+                <action id="7" name="Set mirrored" sid="362010509021979" type="Boss">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="179858960618423">
+            <conditions>
+                <condition id="-22" name="Else" sid="818692306416404" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="908069508067300" type="Boss">
+                    <param id="0" name="Control">0</param>
+                </action>
+                <action id="7" name="Set mirrored" sid="231600396294161" type="Boss">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
